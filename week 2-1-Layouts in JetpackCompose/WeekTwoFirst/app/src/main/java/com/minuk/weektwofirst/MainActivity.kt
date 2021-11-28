@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.minuk.weektwofirst.ui.theme.WeekTwoFirstTheme
@@ -52,16 +53,13 @@ fun ImageListItem(index: Int) {
 @Composable
 fun ScrollingList() {
     val listSize = 100
-    // We save the scrolling position with this state
     val scrollState = rememberLazyListState()
-    // We save the coroutine scope where our animated scroll will be executed
     val coroutineScope = rememberCoroutineScope()
 
     Column {
         Row {
             Button(onClick = {
                 coroutineScope.launch {
-                    // 0 is the first item index
                     scrollState.animateScrollToItem(0)
                 }
             }) {
@@ -83,5 +81,23 @@ fun ScrollingList() {
                 ImageListItem(it)
             }
         }
+    }
+}
+
+@Composable
+fun BodyContent(modifier: Modifier = Modifier) {
+    MyOwnColumn(modifier.padding(8.dp)) {
+        Text("MyOwnColumn")
+        Text("places items")
+        Text("vertically.")
+        Text("We've done it by hand!")
+    }
+}
+
+@Preview
+@Composable
+fun BodyContentPreview() {
+    WeekTwoFirstTheme {
+        BodyContent()
     }
 }
