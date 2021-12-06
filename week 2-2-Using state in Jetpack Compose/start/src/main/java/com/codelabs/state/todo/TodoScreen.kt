@@ -184,12 +184,6 @@ fun TodoItemInput(
             )
 
             Box(Modifier.align(Alignment.CenterVertically)) { buttonSlot() }
-            TodoEditButton(
-                onClick = submit,
-                text = "Add",
-                modifier = Modifier.align(Alignment.CenterVertically),
-                enabled = text.isNotBlank()
-            )
         }
         if (iconsVisible) {
             AnimatedIconRow(icon, onIconChange, Modifier.padding(top = 8.dp))
